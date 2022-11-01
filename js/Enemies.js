@@ -26,20 +26,7 @@ class Enemy {
 
   move() {
     this.enemyPos.y += this.velocity
-
   }
-
-
-
-  // createEnemy() {
-  //   let random = Math.random() * this.enemyImg.length
-  //   let EnemyAngular = new Enemy(this.ctx, this.canvasSize, this.enemyImg[0])
-  //   this.enemyArray.push(EnemyAngular);
-  //   let EnemyBootstrap = new Enemy(this.ctx, this.canvasSize, this.enemyImg[1])
-  //   this.enemyArray.push(EnemyBootstrap);
-  //   let EnemyCSS = new Enemy(this.ctx, this.canvasSize, this.this.enemyImg[2])
-  //   this.enemyArray.push(EnemyCSS);
-  // }
 
 
   moveAll() {
