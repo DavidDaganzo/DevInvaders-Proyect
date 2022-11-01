@@ -26,18 +26,30 @@ class Developer {
     document.onkeydown = event => {
       switch (event.key) {
         case 'ArrowLeft':
-          this.position.x -= 20
+          if (this.position.x > 0) {
+            this.position.x -= 20
+          }
           break;
         case 'ArrowRight':
-          this.position.x += 20
+          if (this.position.x + this.size.w < this.canvasSize.w) {
+            this.position.x += 20
+          }
           break;
         case 'ArrowUp':
-          this.position.y -= 20
+          if (this.position.y > 0) {
+            this.position.y -= 20
+          }
+
           break;
         case 'ArrowDown':
-          this.position.y += 20
+          if (this.position.y + this.size.h < this.canvasSize.h) {
+            this.position.y += 20
+          }
           break;
       }
     }
   }
 }
+
+
+

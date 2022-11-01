@@ -6,6 +6,7 @@ const app = {
   description: 'First Ironhack project',
   ctx: undefined,
   background: undefined,
+
   fpsCouter: 0,
   developer: undefined,
   enemyRandom: [],
@@ -90,15 +91,17 @@ const app = {
         this.developer.position.y + this.developer.size.h > element.enemyPos.y
       ) {
         console.log('Has Chocado idiota')
-        return true
+        this.gameOver()
       }
     })
   },
+
+
+
   gameOver() {
     clearInterval(this.interval)
+    let gameOverSound = new Audio('./Sounds/GameOver.mp3')
+    gameOverSound.play()
   }
-
-
-
 
 }
