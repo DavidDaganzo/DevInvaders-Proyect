@@ -10,7 +10,7 @@ class Enemy {
 
 
     this.enemyInstance = new Image();
-    this.enemyInstance.src = `images/Logos/${this.enemyImg[this.randomImg]}.jpg`;
+    this.enemyInstance.src = `./images/Logos/${this.enemyImg[this.randomImg]}.jpg`;
 
   }
 

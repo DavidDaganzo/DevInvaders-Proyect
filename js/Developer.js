@@ -8,7 +8,7 @@ class Developer {
     },
       this.size = { w: 100, h: 100 },
       this.developerInstance = new Image();
-    this.developerInstance.src = '../images/Developer.png';
+    this.developerInstance.src = './images/Developer.png';
     this.setEventHandlers();
   }
 
@@ -26,16 +26,16 @@ class Developer {
     document.onkeydown = event => {
       switch (event.key) {
         case 'ArrowLeft':
-          this.position.x -= 10
+          this.position.x -= 20
           break;
         case 'ArrowRight':
-          this.position.x += 10
+          this.position.x += 20
           break;
         case 'ArrowUp':
-          this.position.y -= 10
+          this.position.y -= 20
           break;
         case 'ArrowDown':
-          this.position.y += 10
+          this.position.y += 20
           break;
       }
     }

@@ -37,7 +37,7 @@ const app = {
 
   start() {
     this.reset()
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.fpsCouter++
       if (this.fpsCouter % 100 === 0) {
         this.generateEnemy()
@@ -45,6 +45,7 @@ const app = {
 
       this.clearAll()
       this.drawAll()
+      this.isCollision() ? this.gameOver() : null
     }, 1000 / this.FPS)
   },
 
@@ -60,10 +61,12 @@ const app = {
     let randomImg = Math.floor(Math.random() * 11)
     this.enemyRandom.push(new Enemy(this.ctx, this.canvasSize, randomImg))
     console.log(this.enemyRandom.length)
+
   },
 
   clearAll() {
     this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h)
+    this.enemyRandom = this.enemyRandom.filter(elm => elm.enemyPos.y <= this.canvasSize.h)
 
   },
 
@@ -77,6 +80,24 @@ const app = {
 
 
   },
+
+  isCollision() {
+    this.enemyRandom.forEach((element) => {
+      if (
+        this.developer.position.x < element.enemyPos.x + element.enemySize.w &&
+        this.developer.position.x + this.developer.size.w > element.enemyPos.x &&
+        this.developer.position.y < element.enemyPos.y + element.enemySize.h &&
+        this.developer.position.y + this.developer.size.h > element.enemyPos.y
+      ) {
+        console.log('Has Chocado idiota')
+        return true
+      }
+    })
+  },
+  gameOver() {
+    clearInterval(this.interval)
+  }
+
 
 
 
