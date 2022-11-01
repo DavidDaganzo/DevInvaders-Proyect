@@ -39,9 +39,10 @@ const app = {
     this.reset()
     setInterval(() => {
       this.fpsCouter++
-      if (this.fpsCouter % 200 === 0) {
+      if (this.fpsCouter % 100 === 0) {
         this.generateEnemy()
       }
+
       this.clearAll()
       this.drawAll()
     }, 1000 / this.FPS)
@@ -56,7 +57,8 @@ const app = {
   },
 
   generateEnemy() {
-    this.enemyRandom.push(new Enemy(this.ctx, this.canvasSize))
+    let randomImg = Math.floor(Math.random() * 11)
+    this.enemyRandom.push(new Enemy(this.ctx, this.canvasSize, randomImg))
     console.log(this.enemyRandom.length)
   },
 
@@ -68,6 +70,10 @@ const app = {
   drawAll() {
     this.background.draw()
     this.developer.draw()
+
+    this.enemyRandom.forEach(enemy => {
+      enemy.draw()
+    })
 
 
   },
