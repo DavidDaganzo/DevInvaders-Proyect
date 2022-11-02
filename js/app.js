@@ -76,7 +76,7 @@ const app = {
     this.enemyRandom.forEach(enemy => {
       enemy.draw()
     })
-
+    this.drawScore()
   },
 
   isCollision() {
@@ -109,10 +109,15 @@ const app = {
           this.enemyRandom.splice(indexEnemy, 1)
           this.developer.bullets.splice(indexbullets, 1)
           this.score += 125
-          console.log(this.score)
         }
       })
     })
+  },
+
+  drawScore() {
+    this.ctx.font = "30px Sans";
+    this.ctx.fillStyle = "#0a0a0a";
+    this.ctx.fillText("Score: " + this.score, 30, 60);
   },
 
 
