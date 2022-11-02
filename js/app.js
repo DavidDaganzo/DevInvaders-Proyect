@@ -101,7 +101,12 @@ const app = {
           element.enemyPos.y < bulletObject.position.y + bulletObject.size.h &&
           element.enemyPos.y + element.enemySize.h > bulletObject.position.y
         ) {
-          this.gameOver()
+
+          let indexEnemy = this.enemyRandom.indexOf(element)
+          let indexbullets = this.developer.bullets.indexOf(bulletObject + 1)
+
+          this.enemyRandom.splice(indexEnemy, 1)
+          this.developer.bullets.splice(indexbullets, 1)
         }
       })
     })
