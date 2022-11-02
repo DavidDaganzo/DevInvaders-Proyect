@@ -21,6 +21,9 @@ class Developer {
       this.size.w,
       this.size.h,
     )
+    this.bullets.forEach(bullet => {
+      bullet.draw()
+    })
   }
 
   setEventHandlers() {
@@ -56,6 +59,7 @@ class Developer {
   }
   shoot() {
     this.bullets.push(new Bullets(this.ctx, this.canvasSize, this.position.x, this.position.y, this.size.w, this.size.h))
+
   }
 }
 

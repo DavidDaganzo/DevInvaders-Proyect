@@ -6,7 +6,6 @@ const app = {
   description: 'First Ironhack project',
   ctx: undefined,
   background: undefined,
-
   fpsCouter: 0,
   developer: undefined,
   enemyRandom: [],
@@ -68,17 +67,15 @@ const app = {
   clearAll() {
     this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h)
     this.enemyRandom = this.enemyRandom.filter(elm => elm.enemyPos.y <= this.canvasSize.h)
-
+    this.developer.bullets = this.developer.bullets.filter(elm => elm.position.y >= this.canvasSize.h)
   },
 
   drawAll() {
     this.background.draw()
     this.developer.draw()
-
     this.enemyRandom.forEach(enemy => {
       enemy.draw()
     })
-
 
   },
 
