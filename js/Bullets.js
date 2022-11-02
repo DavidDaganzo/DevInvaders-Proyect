@@ -4,30 +4,27 @@ class Bullets {
     this.ctx = ctx
     this.canvasSize = canvasSize
     this.position = {
-      x: developerPosX + developerWidth / 2,
+      x: developerPosX + developerWidth / 2 - 7.5,
       y: developerPosY
     }
-    this.size = { w: developerWidth, h: developerHeight }
     this.velocity = 2
-    this.bulletSize = { w: 10, h: 45 }
+    this.size = { w: 15, h: 75 }
     this.bulletInstance = new Image();
     this.bulletInstance.src = `./images/bullet.png`;
 
   }
   draw() {
-    this.ctx.drawimage(
+    this.ctx.drawImage(
       this.bulletInstance,
       this.position.x,
       this.position.y,
       this.size.w,
       this.size.h,
     )
-    move()
+    this.move()
   }
 
   move() {
     this.position.y -= this.velocity
   }
-
-
 }

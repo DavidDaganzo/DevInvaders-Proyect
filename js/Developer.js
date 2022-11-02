@@ -21,6 +21,7 @@ class Developer {
       this.size.w,
       this.size.h,
     )
+
     this.bullets.forEach(bullet => {
       bullet.draw()
     })
@@ -43,7 +44,6 @@ class Developer {
           if (this.position.y > 0) {
             this.position.y -= 20
           }
-
           break;
         case 'ArrowDown':
           if (this.position.y + this.size.h < this.canvasSize.h) {
@@ -52,16 +52,11 @@ class Developer {
           break;
         case ' ':
           this.shoot();
-          console.log(this.bullets.length)
           break;
       }
     }
   }
   shoot() {
     this.bullets.push(new Bullets(this.ctx, this.canvasSize, this.position.x, this.position.y, this.size.w, this.size.h))
-
   }
 }
-
-
-

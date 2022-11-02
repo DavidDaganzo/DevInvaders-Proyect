@@ -14,7 +14,6 @@ const app = {
     w: undefined, h: undefined
   },
 
-
   init() {
     this.setDimensions()
     this.setContext()
@@ -46,6 +45,8 @@ const app = {
       this.clearAll()
       this.drawAll()
       this.isCollision() ? this.gameOver() : null
+      this.bulletsCollision() ? this.gameOver() : null
+
     }, 1000 / this.FPS)
   },
 
@@ -60,14 +61,12 @@ const app = {
   generateEnemy() {
     let randomImg = Math.floor(Math.random() * 11)
     this.enemyRandom.push(new Enemy(this.ctx, this.canvasSize, randomImg))
-    console.log(this.enemyRandom.length)
-
   },
 
   clearAll() {
     this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h)
     this.enemyRandom = this.enemyRandom.filter(elm => elm.enemyPos.y <= this.canvasSize.h)
-    this.developer.bullets = this.developer.bullets.filter(elm => elm.position.y >= this.canvasSize.h)
+    this.developer.bullets = this.developer.bullets.filter(elm => elm.position.y >= 0 - elm.size.h)
   },
 
   drawAll() {
@@ -87,12 +86,26 @@ const app = {
         this.developer.position.y < element.enemyPos.y + element.enemySize.h &&
         this.developer.position.y + this.developer.size.h > element.enemyPos.y
       ) {
-        console.log('Has Chocado idiota')
         this.gameOver()
       }
     })
   },
 
+  bulletsCollision() {
+    this.developer.bullets.forEach((bulletObject) => {
+      this.enemyRandom.forEach((element) => {
+
+        if (
+          element.enemyPos.x < bulletObject.position.x + bulletObject.size.w &&
+          element.enemyPos.x + element.enemySize.w > bulletObject.position.x &&
+          element.enemyPos.y < bulletObject.position.y + bulletObject.size.h &&
+          element.enemyPos.y + element.enemySize.h > bulletObject.position.y
+        ) {
+          this.gameOver()
+        }
+      })
+    })
+  },
 
 
   gameOver() {
