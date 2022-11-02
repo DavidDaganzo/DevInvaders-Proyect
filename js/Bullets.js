@@ -7,7 +7,7 @@ class Bullets {
       x: developerPosX + developerWidth / 2 - 7.5,
       y: developerPosY
     }
-    this.velocity = 2
+    this.velocity = 4
     this.size = { w: 15, h: 75 }
     this.bulletInstance = new Image();
     this.bulletInstance.src = `./images/bullet.png`;

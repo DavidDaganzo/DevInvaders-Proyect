@@ -10,6 +10,7 @@ const app = {
   developer: undefined,
   enemyRandom: [],
   FPS: 60,
+  score: 0,
   canvasSize: {
     w: undefined, h: undefined
   },
@@ -38,7 +39,7 @@ const app = {
     this.reset()
     this.interval = setInterval(() => {
       this.fpsCouter++
-      if (this.fpsCouter % 100 === 0) {
+      if (this.fpsCouter % 50 === 0) {
         this.generateEnemy()
       }
 
@@ -107,6 +108,8 @@ const app = {
 
           this.enemyRandom.splice(indexEnemy, 1)
           this.developer.bullets.splice(indexbullets, 1)
+          this.score += 125
+          console.log(this.score)
         }
       })
     })
