@@ -10,6 +10,7 @@ const app = {
   developer: undefined,
   enemyRandom: [],
   FPS: 60,
+  enemiesDensity: 60,
   score: 0,
   canvasSize: {
     w: undefined, h: undefined
@@ -39,11 +40,12 @@ const app = {
     this.reset()
     this.interval = setInterval(() => {
       this.fpsCouter++
-      if (this.fpsCouter % 50 === 0) {
+      if (this.fpsCouter % this.enemiesDensity === 0) {
         this.generateEnemy()
+        console.log(this.enemyRandom.length)
       }
-
       this.clearAll()
+      this.dificultty()
       this.drawAll()
       this.isCollision() ? this.gameOver() : null
       this.bulletsCollision() ? this.gameOver() : null
@@ -125,6 +127,12 @@ const app = {
     clearInterval(this.interval)
     let gameOverSound = new Audio('./Sounds/GameOver.mp3')
     gameOverSound.play()
-  }
+  },
+
+  dificultty() {
+    if (this.fpsCouter % 60 === 0) {
+      this.enemiesDensity -= 1
+    }
+  },
 
 }
