@@ -6,7 +6,8 @@ class Developer {
       x: window.innerWidth / 2 - 50,
       y: window.innerHeight - 130
     },
-      this.size = { w: 100, h: 100 },
+      this.bullets = []
+    this.size = { w: 100, h: 100 },
       this.developerInstance = new Image();
     this.developerInstance.src = './images/Developer.png';
     this.setEventHandlers();
@@ -46,8 +47,15 @@ class Developer {
             this.position.y += 20
           }
           break;
+        case ' ':
+          this.shoot();
+          console.log(this.bullets.length)
+          break;
       }
     }
+  }
+  shoot() {
+    this.bullets.push(new Bullets(this.ctx, this.canvasSize, this.position.x, this.position.y, this.size.w, this.size.h))
   }
 }
 
