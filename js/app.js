@@ -12,6 +12,8 @@ const app = {
   enemyRandom: [],
   enemiesDensity: 60,
   score: 0,
+  coolDown: 0,
+  cadence: 100,
   canvasSize: {
     w: undefined, h: undefined
   },
@@ -46,6 +48,8 @@ const app = {
       }
       this.clearAll()
       this.dificultty()
+      this.coolDown++
+      this.coolDown >= this.cadence ? this.developer.canShoot = true : this.developer.canShoot = false
       this.drawAll()
       this.isCollision() ? this.gameOver() : null
       this.bulletsCollision() ? this.gameOver() : null
@@ -133,4 +137,7 @@ const app = {
       this.enemiesDensity -= 1
     }
   },
+
+
+
 }

@@ -7,10 +7,12 @@ class Developer {
       y: window.innerHeight - 130
     },
       this.bullets = []
+    this.canShoot = false
     this.size = { w: 100, h: 100 },
       this.developerInstance = new Image();
     this.developerInstance.src = './images/Developer.png';
     this.setEventHandlers();
+
   }
 
   draw(framesCounter) {
@@ -51,12 +53,17 @@ class Developer {
           }
           break;
         case ' ':
-          this.shoot();
+          this.shoot()
           break;
       }
     }
   }
   shoot() {
-    this.bullets.push(new Bullets(this.ctx, this.canvasSize, this.position.x, this.position.y, this.size.w, this.size.h))
+
+    if (this.canShoot) {
+      this.bullets.push(new Bullets(this.ctx, this.canvasSize, this.position.x, this.position.y, this.size.w, this.size.h))
+      app.coolDown = 0
+    }
+
   }
 }
