@@ -6,10 +6,10 @@ const app = {
   description: 'First Ironhack project',
   ctx: undefined,
   background: undefined,
-  fpsCouter: 0,
+  FPS: 60,
+  framesCounter: 0,
   developer: undefined,
   enemyRandom: [],
-  FPS: 60,
   enemiesDensity: 60,
   score: 0,
   canvasSize: {
@@ -39,8 +39,8 @@ const app = {
   start() {
     this.reset()
     this.interval = setInterval(() => {
-      this.fpsCouter++
-      if (this.fpsCouter % this.enemiesDensity === 0) {
+      this.framesCounter > 5000 ? this.framesCounter = 0 : this.framesCounter++
+      if (this.framesCounter % this.enemiesDensity === 0) {
         this.generateEnemy()
         console.log(this.enemyRandom.length)
       }
@@ -74,7 +74,7 @@ const app = {
 
   drawAll() {
     this.background.draw()
-    this.developer.draw()
+    this.developer.draw(this.framesCounter)
     this.enemyRandom.forEach(enemy => {
       enemy.draw()
     })
@@ -122,7 +122,6 @@ const app = {
     this.ctx.fillText("Score: " + this.score, 30, 60);
   },
 
-
   gameOver() {
     clearInterval(this.interval)
     let gameOverSound = new Audio('./Sounds/GameOver.mp3')
@@ -130,9 +129,8 @@ const app = {
   },
 
   dificultty() {
-    if (this.fpsCouter % 60 === 0) {
+    if (this.framesCounter % 60 === 0) {
       this.enemiesDensity -= 1
     }
   },
-
 }
