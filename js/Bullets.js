@@ -17,10 +17,10 @@ class Bullets {
   draw(framesCounter) {
     this.ctx.drawImage(
       this.bulletInstance,
-      this.bulletInstance.framesIndex * (this.bulletInstance.width / this.bulletInstance.frames),
       0,
-      this.bulletInstance.width / this.bulletInstance.frames,
-      this.bulletInstance.height,
+      this.bulletInstance.framesIndex * (this.bulletInstance.height / this.bulletInstance.frames),
+      this.bulletInstance.width,
+      this.bulletInstance.height / this.bulletInstance.frames,
       this.position.x,
       this.position.y,
       this.size.w,
