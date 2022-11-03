@@ -64,6 +64,5 @@ class Developer {
       this.bullets.push(new Bullets(this.ctx, this.canvasSize, this.position.x, this.position.y, this.size.w, this.size.h))
       app.coolDown = 0
     }
-
   }
 }

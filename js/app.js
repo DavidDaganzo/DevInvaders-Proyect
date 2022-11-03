@@ -22,6 +22,8 @@ const app = {
     this.setDimensions()
     this.setContext()
     this.start()
+    // let InitMusic = new Audio('./Sounds/InitMusic.mp3')
+    // InitMusic.play()
   },
 
   setDimensions() {
@@ -111,10 +113,11 @@ const app = {
 
           let indexEnemy = this.enemyRandom.indexOf(element)
           let indexbullets = this.developer.bullets.indexOf(bulletObject + 1)
-
           this.enemyRandom.splice(indexEnemy, 1)
           this.developer.bullets.splice(indexbullets, 1)
           this.score += 125
+          let collisionSound = new Audio('./Sounds/KillHeadShot.mp3')
+          collisionSound.play()
         }
       })
     })
