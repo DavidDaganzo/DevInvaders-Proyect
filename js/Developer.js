@@ -13,7 +13,7 @@ class Developer {
     this.setEventHandlers();
   }
 
-  draw() {
+  draw(framesCounter) {
     this.ctx.drawImage(
       this.developerInstance,
       this.position.x,
@@ -23,7 +23,7 @@ class Developer {
     )
 
     this.bullets.forEach(bullet => {
-      bullet.draw()
+      bullet.draw(framesCounter)
     })
   }
 
